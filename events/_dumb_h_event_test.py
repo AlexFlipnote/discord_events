@@ -39,8 +39,11 @@ class H(commands.Cog):
             return False
         if msg.channel.id != self.event.channel.id:
             return False  # This isn't the event channel...
+
         if msg.author.id == self.bot.user.id:
             return False  # Don't you fucking dare loop!
+        if msg.author.bot:
+            return await msg.delete()  # No bots allowed...
 
         if msg.content != "h":
             await msg.delete()
@@ -52,6 +55,12 @@ class H(commands.Cog):
             return False
 
         return True  # This message is OK
+
+    async def cog_before_invoke(self, ctx):
+        """ If bot commands are used in event channel """
+        if self.event.channel:
+            if ctx.channel.id == self.event.channel.id:
+                raise commands.CheckFailure()
 
     @commands.Cog.listener()
     async def on_message(self, msg):
