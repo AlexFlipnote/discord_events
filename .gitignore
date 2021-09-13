@@ -1,3 +1,9 @@
+# Custom ignore
+config.json
+pm2.json
+.vscode
+database/*.db
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

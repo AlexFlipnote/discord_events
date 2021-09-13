@@ -1,0 +1,8 @@
+{
+  "token": "discord_bot_token",
+  "prefix": ["!"],
+  "status_type": "online",
+  "status_msg": "I'm alive",
+  "event_category_id": CATEGORY_ID,
+  "event_guild_id": GUILD_ID
+}
